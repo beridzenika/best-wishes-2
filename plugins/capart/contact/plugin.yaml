@@ -1,0 +1,6 @@
+plugin:
+    name: 'capart.contact::lang.plugin.name'
+    description: 'capart.contact::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-envelope
+    replaces: {  }

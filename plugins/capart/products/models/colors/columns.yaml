@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: ID
+        type: number
+    title:
+        label: სათაური
+        type: text
+    status_id:
+        label: ჩართული
+        type: switch

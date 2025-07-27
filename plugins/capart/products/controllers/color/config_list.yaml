@@ -1,0 +1,12 @@
+list: $/capart/products/models/colors/columns.yaml
+modelClass: Capart\Products\Models\Colors
+title: Color
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'capart/products/color/update/:id'

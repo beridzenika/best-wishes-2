@@ -1,0 +1,12 @@
+list: $/capart/products/models/promocode/columns.yaml
+modelClass: Capart\Products\Models\PromoCode
+title: PromoCodes
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'capart/products/promocodes/update/:id'

@@ -1,0 +1,60 @@
+fields:
+    title:
+        label: სათაური
+        span: auto
+        type: text
+    Category:
+        label: კატეგორია
+        span: left
+        select: title
+        type: relation
+    photos:
+        label: სურათები
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    price:
+        label: ფასი
+        span: auto
+        type: number
+    price_before_sale:
+        label: 'ფასი ფასდაკლებამდე'
+        span: left
+        type: number
+        comment: 'თუ არაა ფასდაკლება, დატოვე ცარიელი'
+    quantity:
+        label: რაოდენობა
+        span: left
+        default: '1'
+        type: number
+    description:
+        label: აღწერა
+        size: huge
+        span: left
+        type: richeditor
+    how_to_buy:
+        label: 'როგორ ვიყიდო?'
+        size: huge
+        span: left
+        type: richeditor
+    status_id:
+        label: ჩართული
+        span: left
+        default: 1
+        type: switch
+    best_seller:
+        label: 'Best Seller'
+        span: left
+        type: switch
+    hot_sale:
+        label: 'Hot Sale'
+        span: left
+        type: switch
+    new_arrival:
+        label: 'New Arrival'
+        span: left
+        type: switch

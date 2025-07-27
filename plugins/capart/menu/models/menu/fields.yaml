@@ -1,0 +1,9 @@
+fields:
+    name:
+        label: name
+        span: auto
+        type: text
+    link:
+        label: link
+        span: auto
+        type: text

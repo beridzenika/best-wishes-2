@@ -1,0 +1,33 @@
+==
+<?php
+function onStart() {
+$this['CartCount'] = isset($_COOKIE['cart_items']) ? Count(json_decode($_COOKIE['cart_items'], true)) : 0;
+
+}
+?>
+==
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__option">
+        <!-- <div class="offcanvas__links">
+            <a href="#">Sign in</a>
+            <a href="#">FAQs</a>
+        </div> -->
+        <div class="offcanvas__top__hover">
+            <span>Usd <i class="arrow_carrot-down"></i></span>
+            <ul>
+                <li>GEO</li>
+            </ul>
+        </div>
+    </div>
+    <div class="offcanvas__nav__option">
+        <a href="#" class="search-switch"><img src="{{ 'assets/img/icon/search.png'|theme }}" alt=""></a>
+        <a href="#"><img src="{{ 'assets/img/icon/heart.png'|theme }}" alt=""></a>
+        <a href="{{'cart'|page}}"><img src="{{ 'assets/img/icon/cart.png'|theme }}" alt="">
+            {% if (CartCount > 0) %}
+            <span class="cart-count">{{CartCount}}</span>
+            {% endif %}
+        </a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+</div>

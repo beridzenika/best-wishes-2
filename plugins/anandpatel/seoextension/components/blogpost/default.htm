@@ -1,0 +1,32 @@
+{% put meta %}
+{% default %}
+    {% if post.redirect_url %}
+        <meta http-equiv="refresh" content="0; url={{post.redirect_url}}" />
+    {% endif %}
+
+    {% if SeoBlogPost.seo_title %}
+        <title>{{ SeoBlogPost.seo_title | generateTitle}}</title>
+    {% else %}
+        <title>{{ SeoBlogPost.title | generateTitle }}</title>
+    {% endif %}
+
+    {% if SeoBlogPost.seo_description %}
+        <meta name="description" content="{{post.seo_description}}">
+    {% endif %}
+
+    {% if SeoBlogPost.seo_keywords %}
+        <meta name="keywords" content="{{post.seo_keywords}}">
+    {% endif %}
+
+    {% if SeoBlogPost.canonical_url %}
+        <link rel="canonical" href="{{post.canonical_url}}" />
+    {% else %}
+        {{ '' | generateCanonicalUrl}}
+    {% endif %}
+
+        <meta name="robots" content="{{post.robot_index}},{{post.robot_follow}}">
+
+    {{ ''|otherMetaTags|raw }}
+
+    {{ SeoBlogPost|generateOgTags }}
+{% endput %}

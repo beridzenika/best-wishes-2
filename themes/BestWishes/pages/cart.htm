@@ -1,0 +1,122 @@
+title = "cart"
+url = "/cart"
+layout = "default"
+meta_title = "კალათა"
+meta_description = "აარჩიე სასურველი საჩუქარი ან ნაკრები და შეუკვეთე"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+
+[builderList cart_products]
+modelClass = "Capart\Products\Models\Product"
+scope = "scopeCartProducts"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderDetails locationRules]
+modelClass = "Capart\Orders\Models\Location"
+identifierValue = 1
+modelKeyColumn = "id"
+displayColumn = "delivery_price"
+notFoundMessage = "Record not found"
+==
+<?php
+function onStart() {
+    $this['CartItems'] = isset($_COOKIE['cart_items']) ? json_decode($_COOKIE['cart_items'], true) : [];
+}
+?>
+==
+{% set Products = cart_products.records %}
+
+{% set deliveryPrice = locationRules.record.delivery_price %}
+
+
+<section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>პროდუქტი</th>
+                                    <th>რაოდენობა</th>
+                                    <th>ფასი</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+
+                            {% set TotalPrice = 0 %}
+                            {% for product in Products %}
+                                {% set quantity = CartItems[product.id] %}
+                                {% set productTotalPirce = quantity * product.price %}
+                                {% set TotalPrice = TotalPrice + productTotalPirce %}
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{{ product.photos.0.thumb(90, 90) }}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>{{product.title}}</h6>
+                                            <h5>{{product.price}} ₾</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+<!--                                                <span class="fa fa-angle-left dec qtybtn"></span>-->
+                                                <input type="text" class="cartItemQuantity" data-product_id="{{product.id}}" data-max_quantity="{{product.quantity}}"  value="{{quantity}}">
+<!--                                            <span class="fa fa-angle-right inc qtybtn"></span>-->
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">{{ productTotalPirce|number_format(2) }} ₾</td>
+                                    <td class="cart__close"><a href="#" class="deleteCartItemButton" data-product_id="{{product.id}}"><i class="fa fa-close"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn">
+                                <a href="{{'shop'|page}}">შოპინგის გაგრძელება</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+<!--                    <div class="cart__discount">-->
+<!--                        <h6>Discount codes</h6>-->
+<!--                        <form action="#">-->
+<!--                            <input type="text" placeholder="Coupon code">-->
+<!--                            <button type="submit">Apply</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+                    <div class="cart__total">
+                        <h6>შეჯამება</h6>
+                        <ul>
+                            <li>პროდუქციის ფასი <span> {{ TotalPrice|number_format(2) }} ₾</span></li>
+                            <li>მიტანის ფასი <span>{{deliveryPrice|number_format(2)}} ₾</span></li>
+                            <li>ჯამი <span>{{(TotalPrice + deliveryPrice)|number_format(2)}} ₾</span></li>
+                        </ul>
+                        <a href="{{'checkout'|page}}" class="primary-btn">შეძენა</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <form action="/delete-cart-item" method="POST" id="deleteCartItemForm">
+        <input type="hidden" name="product_id" id="deleteProductID" value="">
+    </form>
+    <form action="/update-quantity" method="POST" id="updateQuantity">
+        <input type="hidden" name="product_id" id="updateQuantityProductID" value="">
+        <input type="hidden" name="quantity" id="newQuantity" value="">
+    </form>
+    </section>

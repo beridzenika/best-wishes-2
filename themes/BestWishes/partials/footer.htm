@@ -1,0 +1,113 @@
+[builderList]
+modelClass = "Capart\Categories\Models\Category"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="{{ 'assets/img/logo-footer.png'|theme }}" alt=""></a>
+                    </div>
+                    <p>შეარჩიე ყველაზე გამორჩეული და დახვეწილი ქალთა სასაჩუქრე ნაკრები</p>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>შეიძინე</h6>
+                
+                    <ul>
+                        {% for record in records %}
+                            {% if record.status_id %}
+                                <li>
+                                    {% spaceless %}
+                                        <li><a href="{{'shop'|page}}?cat_id={{record.id}}">{{ record.title }}</a></li>
+                                        
+                                    {% endspaceless %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>ნავიგაცია</h6>
+                    <ul>
+                        {% partial 'nav-links' %}
+                        <li><a href="{{'rules'|page}}">წესები და პირობები </a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>გამოგვყევით</h6>
+                    <ul>
+                        <li><a href="https://www.facebook.com/profile.php?id=100091748709585">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/best_wishes.giftboxes/">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@best_wishes.giftboxes">Tiktok</a></li>
+                        <li><a href="https://www.tiktok.com/@best.wishes_croch">Tiktok Crochet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>2020
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Messenger საუბრის დანამატი Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your საუბრის დანამატი code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "119216371108226");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v16.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>

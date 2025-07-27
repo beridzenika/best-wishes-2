@@ -1,0 +1,9 @@
+columns:
+    name:
+        label: სახელი
+        type: text
+        searchable: true
+        sortable: true
+    link:
+        label: ლინკი
+        type: text

@@ -1,0 +1,80 @@
+fields:
+    id:
+        label: ID
+        span: auto
+        readOnly: 1
+        type: text
+    status_id:
+        label: სტატუსი
+        options:
+            - გადაუხდელი
+            - გადახდილი
+            - გზაშია
+            - ჩაბარებულია
+        showSearch: true
+        span: left
+        type: dropdown
+    first_name:
+        label: სახელი
+        span: left
+        readOnly: 1
+        type: text
+    last_name:
+        label: გვარი
+        span: auto
+        readOnly: 1
+        type: text
+    id_number:
+        label: 'პირადი ნომერი'
+        span: auto
+        readOnly: 1
+        type: text
+    Location:
+        label: ქალაქი/რეგიონი
+        span: auto
+        disabled: 1
+        readOnly: 1
+        select: title
+        type: relation
+    address:
+        label: მისამართი
+        span: auto
+        readOnly: 1
+        type: text
+    phone_number:
+        label: 'ტელეფონის ნომერი'
+        span: auto
+        readOnly: 1
+        type: text
+    second_phone_number:
+        label: 'დამატებითი ტელეფონის ნომერი'
+        span: auto
+        readOnly: 1
+        type: text
+    comment:
+        label: კომენტარი
+        span: auto
+        readOnly: 1
+        type: text
+    created_at:
+        label: 'შექმნის თარიღი'
+        span: auto
+        disabled: 1
+        readOnly: 1
+        type: text
+    updated_at:
+        label: 'ბოლო განახლების თარიღი'
+        span: auto
+        readOnly: 1
+        disabled: 1
+        type: text
+    delivery_price:
+        label: 'მიტანის ფასი'
+        span: auto
+        readOnly: 1
+        type: text
+    total_price:
+        label: 'ჯამური ფასი'
+        span: auto
+        readOnly: 1
+        type: text

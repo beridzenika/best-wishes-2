@@ -1,0 +1,5 @@
+title: Products
+modelClass: capart\Products\Models\Product
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

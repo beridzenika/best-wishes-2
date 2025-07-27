@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: ID
+        type: number
+    promo_code:
+        label: 'პრომო კოდი'
+        type: text
+    discount:
+        label: ფასდაკლება
+        type: number
+    discount_type:
+        label: 'ფასდაკლების ტიპი'
+        type: number

@@ -1,0 +1,41 @@
+[builderList builderProductsList]
+modelClass = "Capart\Products\Models\Product"
+scope = "scopeBestSeller"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+recordsPerPage = 4
+pageNumber = "{{ :page }}"
+sortColumn = "sort_order"
+sortDirection = "asc"
+==
+{% component 'builderList' %}
+{% set Products = builderProductsList.records %}
+<section class="hero">
+    <div class="hero__slider owl-carousel  mix new-arrivals">
+        {% for product in Products %}
+        <div class="hero__items set-bg"  data-setbg="{{product.photos[0].getPath()}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h3></h3>
+                            <h2></h2>
+                            <p1></p1>
+                            <a href="{{'shop-detail'|page({'id': product.id})}}" class="primary-btn">ახლავე ყიდვა<span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="https://www.facebook.com/profile.php?id=100091748709585" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.tiktok.com/@best_wishes.giftboxes" target="_blank"><i class="fa fa-pinterest"></i></a>
+                                <a href="https://www.instagram.com/best_wishes.giftboxes/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+   </section>

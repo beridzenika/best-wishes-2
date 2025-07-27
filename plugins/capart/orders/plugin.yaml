@@ -1,0 +1,15 @@
+plugin:
+    name: 'capart.orders::lang.plugin.name'
+    description: 'capart.orders::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-credit-card
+    replaces: {  }
+navigation:
+    orders:
+        label: შეკვეთები
+        url: capart/orders/orders
+        icon: icon-credit-card
+    locations:
+        label: ლოკაციები
+        url: capart/orders/locations
+        icon: icon-location-arrow

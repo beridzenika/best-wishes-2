@@ -1,0 +1,11 @@
+plugin:
+    name: 'capart.categories::lang.plugin.name'
+    description: 'capart.categories::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-sitemap
+    replaces: {  }
+navigation:
+    category:
+        label: კატეგორია
+        url: capart/categories/categories
+        icon: icon-sitemap

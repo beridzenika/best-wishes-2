@@ -1,0 +1,140 @@
+title = "checkout"
+url = "/checkout"
+layout = "default"
+meta_title = "გადახდის გვერდი"
+meta_description = "აარჩიე სასურველი საჩუქარი ან ნაკრები და შეუკვეთე"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+
+[builderList cart_products]
+modelClass = "Capart\Products\Models\Product"
+scope = "scopeCartProducts"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList locations]
+modelClass = "Capart\Orders\Models\Location"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart() {
+$this['CartItems'] = isset($_COOKIE['cart_items']) ? json_decode($_COOKIE['cart_items'], true) : [];
+//$this['deliveryPrice'] = config('order.delivery_price');
+}
+?>
+==
+{% set Products = cart_products.records %}
+{% set deliveryPrice = locations.records.0.delivery_price %}
+<section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/payment-order" method="post" id="CheckoutForm">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">მიწოდების დეტალები</h6>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>სახელი<span>*</span></p>
+                                        <input type="text" name="first_name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>გვარი<span>*</span></p>
+                                        <input type="text" name="last_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>ქალაქი, რაიონი ან სოფელი<span>*</span></p>
+                                        <select name="location_id" id="LocationSelect" style="width: 75%">
+                                            {% for location in locations.records %}
+                                            <option value="{{ location.id }}" data-delivery_price="{{location.delivery_price}}">{{ location.title }}</option>
+                                            {% else %}
+                                            <option value="">{{ noRecordsMessage }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>პირადი ნომერი<span>*</span></p>
+                                        <input type="text" name="id_number">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout__input">
+                                <p>მისამართი<span>*</span></p>
+                                <input type="text" name="address" placeholder="ზუსტი მისამართი" class="checkout__input__add"></div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>ტელეფონის ნომერი<span>*</span></p>
+                                        <input type="text" name="phone_number">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>მეორე ტელეფონის ნომერი</p>
+                                        <input type="text" name="second_phone_number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>დამატებითი კომენტარი</p>
+                                <input type="text"
+                                placeholder="სურვილისამებრ" name="comment">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4 class="order__title">შენი შეკვეთა</h4>
+                                <div class="checkout__order__products">პროდუქტი <span>ჯამი</span></div>
+                                <ul class="checkout__total__products">
+                                    {% set TotalPrice = 0 %}
+                                    {% set i = 0 %}
+                                    {% for product in Products %}
+                                        {% set quantity = CartItems[product.id] %}
+                                        {% set productTotalPirce = quantity * product.price %}
+                                        {% set TotalPrice = TotalPrice + productTotalPirce %}
+                                        {% set i = i + 1 %}
+                                            <li>{{i}}. {{product.title|length > 20 ? product.title|slice(0, 26) ~ '...' : product.title}} <span>{{productTotalPirce}} ₾</span></li>
+                                        {% endfor %}
+                                </ul>
+                                <ul class="checkout__total__all">
+                                    <li>პროდუქციის ფასი <span id="productsPrice"> {{ TotalPrice|number_format(2) }} ₾</span></li>
+                                    <li>მიტანის ფასი <span id="deliveryPrice">{{deliveryPrice|number_format(2)}} ₾</span></li>
+                                    <li>ჯამი <span id="totalPrice">{{(TotalPrice + deliveryPrice)|number_format(2)}} ₾</span></li>
+                                </ul>
+                                <div class="checkout__input__checkbox">
+                                    <label for="acc-or">
+                                        ვეთანხმები <a href="{{'rules'|page}}" target="_blank">წესებს და პირობებს</a>
+                                        <input type="checkbox" id="acc-or">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="site-btn">გადახდა</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>

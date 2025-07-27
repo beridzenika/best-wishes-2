@@ -1,0 +1,47 @@
+fields:
+    title:
+        label: სათაური
+        span: auto
+        type: text
+    photos:
+        label: სურათები
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    price:
+        label: ფასი
+        span: left
+        type: number
+    old_price:
+        label: 'ძველი ფასი'
+        span: left
+        type: number
+        comment: 'ფასი ფასდაკლებამდე'
+    end_date:
+        label: 'დასრულების თარიღი'
+        mode: datetime
+        span: left
+        type: datepicker
+    main_page:
+        label: 'მთავარ გვერდზე გამოტანა'
+        span: auto
+        type: switch
+    status_id:
+        label: ჩართული
+        span: auto
+        default: 1
+        type: switch
+    description:
+        label: აღწერა
+        size: huge
+        span: left
+        type: richeditor
+    how_to_buy:
+        label: 'როგორ ვიყიდო'
+        size: huge
+        span: left
+        type: richeditor

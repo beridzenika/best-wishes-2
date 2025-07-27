@@ -1,0 +1,35 @@
+<?= $this->listRender() ?>
+<div class="control-popup modal fade" id="contentBasic" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">ფასის გაწერა</h4>
+            </div>
+            <div class="modal-body">
+                <p><input class="form-control" id="price_before_sale" required placeholder="ფასი ფასდაკლებამდე (თუ არაა დატოვე ცარიელი)" type="number"></p>
+                <p><input class="form-control" id="price" required placeholder="ფასი" type="number"></p>
+            </div>
+            <div class="modal-footer">
+                <button
+                        class="btn btn-primary"
+                        disabled="disabled"
+                        onclick="$(this).data('request-data', {
+                                    products: $('.control-list').listWidget('getChecked'),
+                                    price: $('#price').val(),
+                                    price_before_sale: $('#price_before_sale').val()
+                                })"
+                        data-request="onSetPrice"
+                        data-trigger-action="enable"
+                        data-trigger=".control-list input[type=checkbox]"
+                        data-trigger-condition="checked"
+                        data-request-success="$(this).prop('disabled', true)"
+                        data-dismiss="modal"
+                        data-stripe-load-indicator>
+                    ფასის გაწერა
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">დახურვა</button>
+            </div>
+        </div>
+    </div>
+</div>

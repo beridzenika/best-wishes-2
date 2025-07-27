@@ -1,0 +1,110 @@
+/*---------------------
+  Footer
+-----------------------*/
+.footer {
+  background-image: url(../img/cardboard-textures.jpg);
+  //https://www.google.com/url?sa=i&url=https%3A%2F%2Fdesignbeep.com%2F2012%2F10%2F30%2F50-free-high-resolution-cardboard-textures-for-designers%2F&psig=AOvVaw2rA8DEZv0f0PnLs5DBLN03&ust=1744732803351000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJiTm67y14wDFQAAAAAdAAAAABAE
+  padding-top: 70px;
+}
+
+.footer__about {
+  margin-bottom: 30px;
+  
+  .footer__logo {
+    margin-bottom: 15px;
+
+    a {
+      display: inline-block;
+      img{
+        width: 120px;
+      }
+    }
+  }
+
+  p {
+    color: $white-color;
+    margin-bottom: 30px;
+  }
+}
+
+.footer__widget {
+  margin-bottom: 30px;
+
+  h6 {
+    color: $white-color;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+
+    li {
+      line-height: 36px;
+      list-style: none;
+
+      a {
+        color: $white-color;
+        font-size: 15px;
+      }
+    }
+  }
+
+  
+  .footer__newslatter {
+    
+    p {
+      color: $white-color;
+    }
+
+    form {
+      position: relative;
+
+      input {
+        width: 100%;
+        font-size: 15px;
+        color: #3d3d3d;
+        background: transparent;
+        border: none;
+        padding: 15px 0;
+        border-bottom: 2px solid $white-color;
+
+        &::placeholder {
+          color: #3d3d3d;
+        }
+      }
+
+      button {
+        color: $white-color;
+        font-size: 16px;
+        position: absolute;
+        right: 5px;
+        top: 0;
+        height: 100%;
+        background: transparent;
+        border: none;
+      }
+    }
+  }
+}
+
+.footer__copyright__text {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  margin-top: 40px;
+
+  p {
+    color: $white-color;
+    margin-bottom: 0;
+
+    i {
+      color: $primary-color;
+    }
+
+    a {
+      color: $primary-color;
+    }
+  }
+}

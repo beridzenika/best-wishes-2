@@ -1,0 +1,14 @@
+fields:
+    title:
+        label: სახელი
+        span: auto
+        type: text
+    color:
+        label: ფერი
+        span: left
+        type: colorpicker
+    status_id:
+        label: აქტირი
+        span: left
+        default: 1
+        type: switch

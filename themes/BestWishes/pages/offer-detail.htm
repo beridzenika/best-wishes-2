@@ -1,0 +1,52 @@
+title = "offer-detail"
+url = "/offer-detail/:id"
+layout = "default"
+meta_title = "შემოთავაზებები და ფასდაკლებები"
+meta_description = "აარჩიე სასურველი საჩუქარი ან ნაკრები და შეუკვეთე"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+
+[builderDetails]
+modelClass = "Capart\Offers\Models\Offer"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[SeoStaticPage]
+==
+{% set product =  builderDetails.record%}
+<section class="shop-details">
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+</div>
+</div>
+
+                        <p><h5> ჩვენი კეპები   მზადდება სხვადასხვა ქსოვილისგან, ამიტომ სწორი მოვლა უმნიშვნელოვანეს როლს ასრულებს მის ხანგრძლივ მოხმარებაში. ჩვენი კეპების უმეტესობა მზადდება ბამბის ტილოსგან ან ბამბის და პოლიესტერის ნარევისგან, პლასტიკური ფორმის ჩათვლით. ეს ქსოვილები არის ფერადი, მტკიცე და გამძლე, მაგრამ მოითხოვს სპეციფიურ მოვლას. ამიტომ ჩვენ ვერ გაძლევთ იმის გარანტიას რომ თქვენს მიერ მათი გარეცხვისას, ის არ დაკარგავს ფერს ან არ შეიცვლის ფორმას. ამიტომაც მნიშნელოვანია რომ დავიცვათ შემდეგი პირობები:  </h5></p>
+                      
+                      
+                </div>
+ <p><h4><i class="fa fa-close" style="font-size:24px"></i> კეპების გარეცხვა არ შეიძლება</h4></p>
+ <img src="https://i.ibb.co/pPQ9wsS/dont-wash.png" style="width: 300px; height: auto;">
+ 
+ <p><h4><i class="fa fa-check" style="font-size:24px"></i> დასაშვებია მხოლოდ მშრალი წმენდა</h4></p>   
+ 
+ <img src="https://i.ibb.co/wwwStFy/dry-clean.png" style="width: 300px; height: auto;">
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+</section>

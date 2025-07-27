@@ -1,0 +1,11 @@
+plugin:
+    name: 'capart.payments::lang.plugin.name'
+    description: 'capart.payments::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-money
+    replaces: {  }
+navigation:
+    payments:
+        label: გადახდები
+        url: capart/payments/payments
+        icon: icon-money

@@ -1,0 +1,46 @@
+<div class="shop__sidebar__accordion">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-heading">
+                <a data-toggle="collapse" data-target="#collapseOne">კატეგორიები</a>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="shop__sidebar__categories">
+                        <ul>
+                            <li ><a class="{{get('cat_id') == 0 ? 'active' : ''}}" href="{{'shop'|page({ page: 1 })}}">ყველა</a></li>
+                            {% for category in data.Categories %}
+                            <li ><a class="{{category.id == get('cat_id') ? 'active' : ''}}" href="{{'shop'|page({ page: 1 })}}?cat_id={{category.id}}">{{category.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="card">
+            <div class="card-heading">
+                <a data-toggle="collapse" data-target="#collapseFive">ფერები </a>
+            </div>
+            <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="shop__sidebar__color">
+                        {% for color in data.Colors %}
+                        <a href="{{'shop'|page({ page: 1 })}}{{get('cat_id') ? '?cat_id='~get('cat_id')~'&' : '?'}}color_id={{color.id}}">
+                            <label class="c-1" style="background:{{color.color}}">
+                            </label>
+                        </a>
+                        {% if (get('color_id') == color.id) %}
+                            <a href="{{'shop'|page({ page: 1 })}}{{get('cat_id') ? '?cat_id='~get('cat_id') : ''}}">
+                               <i class="fa fa-close color_close"></i>
+                            </a>
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+</div>

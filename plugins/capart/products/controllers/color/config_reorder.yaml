@@ -1,0 +1,4 @@
+title: Color
+modelClass: Capart\Products\Models\Colors
+toolbar:
+    buttons: reorder_toolbar

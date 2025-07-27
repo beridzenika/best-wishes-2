@@ -1,0 +1,12 @@
+list: $/capart/offers/models/offer/columns.yaml
+modelClass: Capart\Offers\Models\Offer
+title: Offers
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'capart/offers/offers/update/:id'

@@ -1,0 +1,22 @@
+fields:
+    promo_code:
+        label: 'პრომო კოდი'
+        span: auto
+        type: text
+    discount_type:
+        label: 'ფასდაკლების ტიპი'
+        options:
+            1: 'ფიქსირებული ფასი'
+            2: პროცენტი
+        showSearch: true
+        span: left
+        type: dropdown
+    discount:
+        label: ფასდაკლება
+        span: left
+        type: number
+    status_id:
+        label: ჩართული
+        span: left
+        default: 1
+        type: switch

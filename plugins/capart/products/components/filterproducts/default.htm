@@ -1,0 +1,46 @@
+{% set Products = filterproducts.Products %}
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form>
+                            <input type="text" name="keyword" placeholder="ძებნა..." value="{{get('keyword')}}">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    {% partial 'shop/sidebar' data = filterproducts  %}
+                </div>
+            </div>
+            <div class="col-lg-9">
+                {% partial 'shop/products_option' total = Products.total %}
+                <div class="row">
+                    {% for product in Products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <a  href="{{'shop-detail'|page({'id': product.id})}}">
+                            <div class="product__item  {% if (product.hot_sale == 1) %}sale{% endif %}">
+                                <div class="product__item__pic set-bg" data-setbg="{{product.photos[0].thumb(460, 460) }}">
+                                    {% if (product.hot_sale == 1) %} <span class="label">Sale</span> {% endif %}
+                                    {% if (product.new_arrival == 1) %}<span class="label">New</span>{% endif %}
+
+                                    <ul class="product__hover">
+<!--                                        <li><img src="{{ 'assets/img/icon/heart.png'|theme }}" alt=""></li>-->
+                                        <li><img src="{{ 'assets/img/icon/search.png'|theme }}" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>{{product.title}}</h6>
+                                    <h5>{{product.price}} ₾ <span class="discount">{{product.price_before_sale > 0 ? product.price_before_sale~' ₾' : ''}}</span></h5>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% partial 'pagination' records = Products %}
+            </div>
+        </div>
+    </div>
+</section>

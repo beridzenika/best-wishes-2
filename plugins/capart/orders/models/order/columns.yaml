@@ -1,0 +1,51 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    status_id:
+        label: სტატუსი
+        type: special_order_statuses
+    first_name:
+        label: სახელი
+        type: text
+        searchable: true
+    last_name:
+        label: გვარი
+        type: text
+        searchable: true
+    phone_number:
+        label: 'ტელეფონის ნომერი'
+        type: text
+        searchable: true
+    location_id:
+        label: ქალაქი/რეგიონი
+        type: text
+        searchable: true
+        select: 'title'
+        relation: Location
+    address:
+        label: მისამართი
+        type: text
+    created_at:
+        label: 'შექმნის დრო'
+        type: datetime
+        sortable: true
+    updated_at:
+        label: 'ბოლო განახლება'
+        type: datetime
+        sortable: true
+    id_number:
+        label: 'პირადი ნომერი'
+        type: text
+    total_price:
+        label: 'ჯამური ფასი'
+        type: text
+        sortable: true
+    price:
+        label: 'პროდუქტების ფასი'
+        type: text
+    delivery_price:
+        label: 'მიტანის ფასი'
+        type: text

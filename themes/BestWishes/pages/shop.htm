@@ -1,0 +1,89 @@
+title = "shop"
+url = "/shop/:page?"
+layout = "default"
+meta_title = "საჩუქრების მაღაზია"
+meta_description = "აარჩიე სასურველი საჩუქარი ან ნაკრები და შეუკვეთე"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+
+[filterproducts]
+scopeValue = "{{ :scope }}"
+noRecordsMessage = "No records found"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[SeoStaticPage]
+==
+<?php
+function onStart() {
+$this['pageParam'] = $this->param('page');
+}
+?>
+==
+{% set Products = filterproducts.Products %}
+
+
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 sidebar__container">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form>
+                            <input type="text" name="keyword" placeholder="ძებნა..." value="{{get('keyword')}}" class="input">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    {% partial 'shop/sidebar' data = filterproducts  %}
+                </div>
+            </div>
+            <div class="col-lg-9">
+                {% partial 'shop/products_option' total = Products.total %}
+                <div class="row">
+                    {% for product in Products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <a  href="{{'shop-detail'|page({'id': product.id})}}">
+                            <div class="product__item  {% if (product.hot_sale == 1) %}sale{% endif %}">
+                                <div class="product__item__pic set-bg" data-setbg="{{product.photos[0].getPath()}}">
+                                    {% if (product.hot_sale == 1) %} <span class="label">Sale</span> {% endif %}
+                                    {% if (product.new_arrival == 1) %} <span class="label">New</span>{% endif %}
+                                    {% if (product.quantity <= 0) %} <span class="label" style="color: #fff;background: #dc3545;">Out of stock</span>{% endif %}
+
+                                    <ul class="product__hover">
+<!--                                        <li><img src="{{ 'assets/img/icon/heart.png'|theme }}" alt=""></li>-->
+                                        <li><img src="{{ 'assets/img/icon/search.png'|theme }}" alt=""></li>
+                                        <li class="add-to-cart-btn" data-product-id="{{product.id}}" data-added="false">
+                                            <img src="{{ 'assets/img/icon/cart.png'|theme }}" alt="Add to Cart">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>{{product.title}}</h6>
+                                    <h5>{{product.price}} ₾ <span class="discount">{{product.price_before_sale > 0 ? product.price_before_sale~' ₾' : ''}}</span></h5>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% partial 'pagination' records = Products %}
+            </div>
+        </div>
+    </div>
+    <form id="addToCartFromList" action="/add-to-cart" method="post">
+        <input type="hidden" name="product_id">
+        <input type="hidden" name="quantity" value="1">
+        <input type="hidden" name="from" value="shop/{{pageParam ? pageParam : 1}}">
+        <input type="hidden" name="cat_id" value="{{input('cat_id')}}">
+        <input type="hidden" name="color_id" value="{{input('color_id')}}">
+        <input type="hidden" name="sort" value="{{input('sort')}}">
+                    <!-- TOP.GE ASYNC COUNTER CODE -->
+            <!-- <div id="top-ge-counter-container" data-site-id="117732"></div>
+            <script async src="//counter.top.ge/counter.js"></script> -->
+            <!-- / END OF TOP.GE COUNTER CODE -->
+
+    </form>
+</section>

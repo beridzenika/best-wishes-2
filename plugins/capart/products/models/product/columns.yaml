@@ -1,0 +1,37 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    title:
+        label: სათაური
+        type: text
+    price:
+        label: ფასი
+        type: number
+    price_before_sale:
+        label: 'ფასი ფასდაკლებამდე'
+        type: number
+    best_seller:
+        label: 'best seller'
+        type: switch
+    new_arrival:
+        label: 'new arrival'
+        type: switch
+    hot_sale:
+        label: 'hot sale'
+        type: switch
+    status_id:
+        label: ჩართული
+        type: switch
+    created_at:
+        label: 'დამატ. თარიღი'
+        type: datetime
+    quantity:
+        label: რაოდენობა
+        type: number
+    sort_order:
+        label: მიმდევრობა
+        type: number
+        sortable: true

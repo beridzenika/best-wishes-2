@@ -1,0 +1,10 @@
+fields:
+    title:
+        label: სათაური
+        span: auto
+        type: text
+    status_id:
+        label: აქტიური
+        span: left
+        default: 1
+        type: switch

@@ -1,0 +1,53 @@
+[builderList builderProductsList]
+modelClass = "Capart\Products\Models\Product"
+scope = "scopeBestSeller"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "sort_order"
+sortDirection = "asc"
+==
+{% component 'builderList' %}
+{% set Products = builderProductsList.records %}
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">ბესთსელერი</li>
+                    <li data-filter=".new-arrivals">სიახლე</li>
+                    <li data-filter=".hot-sales">ფასდაკლებული</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row product__filter">
+            {% for product in Products %}
+            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix {% if (product.new_arrival == 1) %}new-arrivals{% endif %} {% if (product.hot_sale == 1) %}hot-sales{% endif %}">
+                <a  href="{{'shop-detail'|page({'id': product.id})}}">
+                    <div class="product__item  {% if (product.hot_sale == 1) %}sale{% endif %}">
+                        <div class="product__item__pic set-bg" data-setbg="{{product.photos[0].getPath()}}">
+                            {% if (product.hot_sale == 1) %} <span class="label">Sale</span> {% endif %}
+                            {% if (product.new_arrival == 1) %}<span class="label">New</span>{% endif %}
+                             {% if (product.quantity <= 0) %} <span class="label" style="color: #fff;background: #dc3545;">Out of stock</span>{% endif %}
+                            <ul class="product__hover">
+                                <li><img src="{{ 'assets/img/icon/heart.png'|theme }}" alt=""></li>
+                                <li><img src="{{ 'assets/img/icon/search.png'|theme }}" alt=""></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{product.title}}</h6>
+                            <h5>{{product.price}} ₾ <span class="discount">{{product.price_before_sale > 0 ? product.price_before_sale~' ₾' : ''}}</span></h5>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+
+    </div>
+</section>

@@ -1,0 +1,10 @@
+name: Products
+form: $/capart/products/models/product/fields.yaml
+modelClass: Capart\Products\Models\Product
+defaultRedirect: capart/products/products
+create:
+    redirect: 'capart/products/products/update/:id'
+    redirectClose: capart/products/products
+update:
+    redirect: capart/products/products
+    redirectClose: capart/products/products

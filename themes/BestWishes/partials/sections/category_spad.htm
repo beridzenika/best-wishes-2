@@ -1,0 +1,63 @@
+[builderList Offers]
+modelClass = "Capart\Offers\Models\Offer"
+scope = "scopeMainPage"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set Offer =  Offers.records[0] %}
+
+
+<section class="categories spad">
+     {% if (Offer) %}
+    <div class="container">
+   
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="categories__text">
+                    <h2>კეპები <br /> <span>ნაკრებები</span> <br /> აქსესუარები</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="categories__hot__deal">
+                    <img src="{{ Offer.photos[0].getPath()}}" alt="">
+                    <div class="hot__deal__sticker">
+                        <span><s>{{Offer.old_price}} ₾</s></span>
+                        <h5>{{Offer.price}} ₾</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+                <div class="categories__deal__countdown">
+                    <span>კვირის შეთავაზება</span>
+                    <h2>{{Offer.title}}</h2>
+                    <p>დასრულებამდე დარჩა:</p>
+                    <div class="categories__deal__countdown__timer" id="countdown" data-date="{{Offer.end_date}}">
+                        <div class="cd-item">
+                            <span>10</span>
+                            <p>დღე</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>12</span>
+                            <p>საათი</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>50</span>
+                            <p>წუთი</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>წამი</p>
+                        </div>
+                    </div>
+                    <a href="{{'shop'|page}}?cat_id=9" class="primary-btn">ახლავე ყიდვა</a>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+     {% endif %}
+</section>

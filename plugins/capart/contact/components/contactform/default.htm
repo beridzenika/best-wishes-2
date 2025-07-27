@@ -1,0 +1,25 @@
+<div class="contact__form">
+    <form data-request="onSend">
+        <div class="row">
+            <div class="col-lg-6">
+                <input type="text" placeholder="სახელი" class="input" name="name">
+            </div>
+            <div class="col-lg-6">
+                <input type="text" placeholder="გვარი" class="input" name="lname">
+            </div>
+            <div class="col-lg-6">
+                <input type="email" placeholder="მეილი" class="input" name="email">
+            </div>
+            <div class="col-lg-12">
+                <textarea placeholder="მესიჯი" class="input" name="content"></textarea>
+                <button type="submit" class="site-btn">მესიჯის გაგზავნა</button>
+            </div>
+        </div>
+    </form>
+
+    <ul>
+        {% for error in errors.all() %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>

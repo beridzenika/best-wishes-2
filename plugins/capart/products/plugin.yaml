@@ -1,0 +1,29 @@
+plugin:
+    name: 'capart.products::lang.plugin.name'
+    description: 'capart.products::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-cube
+    replaces: {  }
+navigation:
+    products:
+        label: პროდუქტები
+        url: capart/products/products
+        icon: icon-cube
+        sideMenu:
+            products:
+                label: პროდუქტები
+                url: capart/products/products
+                icon: icon-cube
+            color:
+                label: ფერი
+                url: capart/products/color
+                icon: icon-paint-brush
+    main-menu-item:
+        label: 'პრომო კოდები'
+        url: capart/products/promocodes
+        icon: icon-qrcode
+        sideMenu:
+            side-menu-item:
+                label: 'Menu Item'
+                icon: icon-sitemap
+                url: /

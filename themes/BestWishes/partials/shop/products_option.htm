@@ -1,0 +1,22 @@
+<div class="shop__product__option">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="shop__product__option__left">
+                <p>სულ მოიძებნა: {{total}} პროდუქტი</p>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="shop__product__option__right">
+                <form>
+                    <select name="sort" onchange="this.form.submit()" class="input">
+                        <option value="0" {{get('sort') == 0 ? 'selected' : ''}}>ფასი</option>
+                        <option value="1" {{get('sort') == 1 ? 'selected' : ''}}>ფასი ზრდადი</option>
+                        <option value="2" {{get('sort') == 2 ? 'selected' : ''}}>ფასი კლებადი</option>
+                    </select>
+                    <input type="hidden" name="cat_id" value="{{get('cat_id')}}">
+                    <input type="hidden" name="color_id" value="{{get('color_id')}}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

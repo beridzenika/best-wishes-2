@@ -1,0 +1,25 @@
+{% set nbPages = records.lastPage %}
+{% set currentPage =  records.currentPage %}
+{% set nearbyPagesLimit = 4 %}
+
+{% if nbPages > 1 %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="product__pagination">
+    {% for i in 1..nbPages %}
+        {% if 0 == (currentPage - nearbyPagesLimit) - loop.index %} {# dot before #}
+        <a class="item" href="{{this.page.baseFileName|page({ 'page': 1 })~'?cat_id='~get('cat_id')~'&color_id='~get('color_id')~'&sort='~get('sort')}}">1</a> 
+            <a class="item">...</a>
+        {% elseif 0 == (currentPage + nearbyPagesLimit) - loop.index %} {# dot after #}
+            <a class="item">...</a>
+            <a class="item" href="{{this.page.baseFileName|page({ 'page': nbPages })}}">{{nbPages}}</a>
+        {% elseif 0 < (currentPage - nearbyPagesLimit) - loop.index %} {# hide all before #}
+        {% elseif 0 > (currentPage + nearbyPagesLimit) - loop.index %} {# hide all after #}
+        {% else %}
+                <a class="{{ currentPage == loop.index ? 'active' : '' }}" href="{{this.page.baseFileName|page({ 'page': loop.index })~'?cat_id='~get('cat_id')~'&color_id='~get('color_id')~'&sort='~get('sort')}}">{{ loop.index }}</a>
+        {% endif %}
+    {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,10 @@
+name: Offers
+form: $/capart/offers/models/offer/fields.yaml
+modelClass: Capart\Offers\Models\Offer
+defaultRedirect: capart/offers/offers
+create:
+    redirect: 'capart/offers/offers/update/:id'
+    redirectClose: capart/offers/offers
+update:
+    redirect: capart/offers/offers
+    redirectClose: capart/offers/offers

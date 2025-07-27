@@ -1,0 +1,10 @@
+name: Menu
+form: $/capart/menu/models/menu/fields.yaml
+modelClass: Capart\Menu\Models\Menu
+defaultRedirect: capart/menu/menu
+create:
+    redirect: 'capart/menu/menu/update/:id'
+    redirectClose: capart/menu/menu
+update:
+    redirect: capart/menu/menu
+    redirectClose: capart/menu/menu

@@ -1,0 +1,6 @@
+plugin:
+    name: 'capart.cart::lang.plugin.name'
+    description: 'capart.cart::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-shopping-cart
+    replaces: {  }

@@ -1,0 +1,9 @@
+fields:
+    title:
+        label: დასახელება
+        span: left
+        type: text
+    delivery_price:
+        label: 'მიტანის ფასი'
+        span: left
+        type: number

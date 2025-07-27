@@ -1,0 +1,10 @@
+name: PromoCodes
+form: $/capart/products/models/promocode/fields.yaml
+modelClass: Capart\Products\Models\PromoCode
+defaultRedirect: capart/products/promocodes
+create:
+    redirect: 'capart/products/promocodes/update/:id'
+    redirectClose: capart/products/promocodes
+update:
+    redirect: capart/products/promocodes
+    redirectClose: capart/products/promocodes

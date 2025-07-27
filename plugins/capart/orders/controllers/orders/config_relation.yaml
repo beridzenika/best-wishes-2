@@ -1,0 +1,6 @@
+OrderProducts:
+    label: 'პროდუქტები'
+    view:
+      list: $/capart/orders/models/orderproduct/columns.yaml
+      toolbarButtons: false
+      showCheckboxes: false

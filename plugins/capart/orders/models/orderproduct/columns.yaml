@@ -1,0 +1,13 @@
+columns:
+    product_id:
+        label: produt_id
+        type: text
+    title:
+        label: სათაური
+        type: text
+    quantity:
+        label: რაოდენობა
+        type: text
+    price:
+        label: 'ფასი (ჯამური)'
+        type: number

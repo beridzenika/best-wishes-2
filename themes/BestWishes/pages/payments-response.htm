@@ -1,0 +1,33 @@
+title = "payment-response"
+url = "/payment-response"
+layout = "default"
+meta_title = "გადახდის სტატუსი"
+meta_description = "აარჩიე სასურველი საჩუქარი ან ნაკრები და შეუკვეთე"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+==
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="contact__text">
+                    <div class="section-title">
+                        <span>ინფორმაცია</span>
+                        {% if (input('response') == 1) %}
+                            <h2>თქვენი შეკვეთა: #{{ input('order_id') }} მიღებულია! </h2>
+                            <p><strong> შეკვეთას მალე მოგაწვდით მითითებულ მისამართზე. დეტალებზე მოგვმარეთ: Whatsapp +995 571 23 72 46</strong> </p>
+                        {% else %}
+                            <h2>გადახდა წარუმატებლად დასრულდა </h2>
+                            <p><strong> სამწუხაროდ გადახდა წარუმატებლად დასრულდა. გთხოვთ გადაამოწმოთ მონაცემები ან მოგვმაროთ: Whatsapp +995 571 23 72 46</strong> </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact spad">
+</section>

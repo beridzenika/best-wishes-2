@@ -1,0 +1,11 @@
+plugin:
+    name: 'capart.menu::lang.plugin.name'
+    description: 'capart.menu::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-navicon
+    replaces: {  }
+navigation:
+    main-menu-item:
+        label: მენიუ
+        url: capart/menu/menu
+        icon: icon-navicon

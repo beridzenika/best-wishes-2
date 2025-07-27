@@ -1,0 +1,10 @@
+name: Locations
+form: $/capart/orders/models/location/fields.yaml
+modelClass: Capart\Orders\Models\Location
+defaultRedirect: capart/orders/locations
+create:
+    redirect: 'capart/orders/locations/update/:id'
+    redirectClose: capart/orders/locations
+update:
+    redirect: capart/orders/locations
+    redirectClose: capart/orders/locations

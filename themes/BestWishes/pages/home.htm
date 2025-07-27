@@ -1,0 +1,33 @@
+title = "home"
+url = "/"
+layout = "default"
+meta_title = "შეარჩიე გამორჩეული საჩუქარი!"
+meta_description = "შეარჩიე ყველაზე გამორჩეული და დახვეწილი ქალთა სასაჩუქრე ნაკრები"
+is_hidden = 0
+seo_keywords = "სამაჯურები, საყურეები, ნაკრები, ყელსაბამი, სასაჩუქრე ყუთები"
+robot_index = "index"
+robot_follow = "follow"
+
+[SeoStaticPage]
+
+[filterproducts]
+scopeValue = "{{ :scope }}"
+noRecordsMessage = "No records found"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+==
+
+    <div class="home-category-nav">
+        <div class="shop__sidebar__categories">
+            <ul class="nice-scroll">
+                {% for category in filterproducts.Categories %}
+                <li ><a class="{{category.id == get('cat_id') ? 'active' : ''}}" href="{{'shop'|page({ page: 1 })}}?cat_id={{category.id}}">{{category.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% partial 'sections/hero_spad' %}
+
+{% partial 'sections/best_sellers' %}

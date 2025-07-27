@@ -1,0 +1,10 @@
+name: Color
+form: $/capart/products/models/colors/fields.yaml
+modelClass: Capart\Products\Models\Colors
+defaultRedirect: capart/products/color
+create:
+    redirect: 'capart/products/color/update/:id'
+    redirectClose: capart/products/color
+update:
+    redirect: capart/products/color
+    redirectClose: capart/products/color

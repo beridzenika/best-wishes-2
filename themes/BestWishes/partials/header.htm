@@ -1,0 +1,35 @@
+==
+<?php
+function onStart() {
+$this['CartCount'] = isset($_COOKIE['cart_items']) ? Count(json_decode($_COOKIE['cart_items'], true)) : 0;
+
+}
+?>
+==
+<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href="{{'home'|page}}"><img src="{{ 'assets/img/logo.png'|theme }}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul class="record-list">
+                        {% partial 'nav-links' %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-1 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img class="search-icon" src="{{ 'assets/img/icon/search.png'|theme }}" alt=""></a>
+                    <a href="{{'cart'|page}}"><img src="{{ 'assets/img/icon/cart.png'|theme }}" alt="">
+                        {% if (CartCount > 0) %}
+                        <span class="cart-count">{{CartCount}}</span>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>

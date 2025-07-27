@@ -1,0 +1,10 @@
+name: Categories
+form: $/capart/categories/models/category/fields.yaml
+modelClass: Capart\Categories\Models\Category
+defaultRedirect: capart/categories/categories
+create:
+    redirect: 'capart/categories/categories/update/:id'
+    redirectClose: capart/categories/categories
+update:
+    redirect: capart/categories/categories
+    redirectClose: capart/categories/categories

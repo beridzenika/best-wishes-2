@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: ID
+        type: number
+    order_id:
+        label: 'შეკვეთის ID'
+        type: text
+    price:
+        label: თანხა
+        type: text
+    ip:
+        label: IP
+        type: text
+    status:
+        label: სტატუსი
+        type: text
+    reject_reason:
+        label: 'უარის მიზეზი'
+        type: text
+    payment_order_id:
+        label: 'payment order id'
+        type: text

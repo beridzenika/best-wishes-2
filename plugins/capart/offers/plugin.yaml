@@ -1,0 +1,11 @@
+plugin:
+    name: 'capart.offers::lang.plugin.name'
+    description: 'capart.offers::lang.plugin.description'
+    author: Capart
+    icon: wn-icon-dollar
+    replaces: {  }
+navigation:
+    main-menu-item:
+        label: შეთავაზებები
+        url: capart/offers/offers
+        icon: icon-dollar
